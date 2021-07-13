@@ -1,0 +1,8 @@
+---
+applications:
+  - name: tyk-gateway-translator-service
+    docker:
+      image: mohdtabish99/tyk_server_custom:latest
+      username: mohdtabish99
+#    env:
+#      MONGO_SERVICE_NAME: "mymongodb"

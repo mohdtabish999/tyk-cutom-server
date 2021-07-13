@@ -1,0 +1,26 @@
+{
+  "name": "Wrapper Service API",
+  "slug": "Wrapper-service-api",
+  "api_id": "wrapper-service",
+  "org_id": "wrapper-service",
+  "use_keyless": true,
+  "definition": {
+    "location": "header",
+    "key": "x-api-version"
+  },
+  "version_data": {
+    "not_versioned": true,
+    "versions": {
+      "Default": {
+        "name": "Default",
+        "use_extended_paths": true
+    }
+   }
+  },
+  "proxy": {
+    "listen_path": "/wrapper-service/",
+    "target_url": "https://wrapper-service.apps.tas.uat.lnd.hclcnlabs.com/",
+    "strip_listen_path": true
+  },
+  "active": true
+}

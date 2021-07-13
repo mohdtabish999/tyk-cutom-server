@@ -1,0 +1,35 @@
+---
+resources:
+  - name: source-code
+    type: git
+    source:
+      uri: https://github.com/mohdtabish999/tyk-cutom-server.git
+      branch: main
+    
+#  - name: tyk-docker-image
+#    type: registry-image
+#    source:
+#      repository: mohdtabish99/tyk_server_custom:latest
+
+  - name: cf
+    type: cf
+    source:
+      api: {{cf-api}}
+      username: {{cf-username}}
+      password: {{cf-password}}
+      organization: {{cf-organization}}
+      space: {{cf-space}}
+      skip_cert_check: true   
+    
+    
+jobs:
+  - name: push-to-pcf
+    public: true
+    plan:
+    - get: source-code
+#    - get: tyk-docker-image
+    - put: cf
+      params:
+        manifest: source-code/ci/manifest.yml
+        docker_password: ((docker-password))
+
